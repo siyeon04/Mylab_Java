@@ -1,6 +1,7 @@
 package mylab.library.entity;
 
 public class Book {
+	// private 선언
     private String title;
     private String author;
     private String isbn;
@@ -14,7 +15,7 @@ public class Book {
         this.author = author;
         this.isbn = isbn;
         this.publishYear = publishYear;
-        this.isAvailable = true;
+        this.isAvailable = true; // isAvailable은 항상 true로(새 책은 항상 대출 가능 상태)
     }
 
     public String getTitle() { return title; }
@@ -31,15 +32,16 @@ public class Book {
 
     public boolean isAvailable() { return isAvailable; }
     public void setAvailable(boolean available) { isAvailable = available; }
-
+    
     public boolean checkOut() {
         if (isAvailable) {
             isAvailable = false;
             return true;
         }
-        return false;
+        return false; // 대출중 -> false
     }
 
+    // 반납 -> 대출 가능 상태로 변경 -> true
     public void returnBook() { isAvailable = true; }
 
     @Override
